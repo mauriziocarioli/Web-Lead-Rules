@@ -5,7 +5,6 @@ Invoke by posting the following content
 [source,JSON]
 ----
 {
-    "lookup": "web-lead-stateless-ksession",
     "commands": [
         {
             "insert": {
@@ -32,14 +31,54 @@ Invoke by posting the following content
             }
         },
         {
-            "fire-all-rules": {
-                "out-identifier": "firedActivations"
+            "insert": {
+                "object": {
+                    "com.home_security.web_lead.Community": {
+                        "inccyavehh": "54199"
+                    }
+                },
+                "out-identifier": "community",
+                "return-object": false
             }
         },
         {
-            "get-objects": {
-                "out-identifier": "objects"
-           }
+            "insert": {
+                "object": {
+                    "com.home_security.web_lead.Dnis": {}
+                },
+                "out-identifier": "dnis",
+                "return-object": false
+            }
+        },
+        {
+            "insert": {
+                "object": {
+                    "com.home_security.web_lead.WebSplit": {}
+                },
+                "out-identifier": "webSplit",
+                "return-object": false
+            }
+        },
+        {
+            "insert": {
+                "object": {
+                    "com.home_security.web_lead.Response": {}
+                },
+                "out-identifier": "response",
+                "return-object": true
+            }
+        },
+        {
+            "start-process": {
+                "processId": "Web-Lead-Rules.DecisionFlow",
+                "parameter": [],
+                "out-identifier": null
+            }
+        },
+        {
+            "fire-all-rules": {
+                "out-identifier": "firedActivations"
+            }
         },
         {
             "dispose": {}
@@ -52,5 +91,5 @@ to the end point
 
 [source,URL]
 ----
-http://localhost:8080/kie-server/services/rest/server/containers/instances/Web-Lead_1.0.0-SNAPSHOT
+http://localhost:8080/kie-server/services/rest/server/containers/instances/Web-Lead-Rules
 ----
