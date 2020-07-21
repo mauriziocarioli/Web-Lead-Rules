@@ -191,7 +191,7 @@
       <header>LOG2</header>
       <definition>
         <org.drools.workbench.models.datamodel.rule.FreeFormLine>
-          <text>System.out.println(&quot;response: &quot;+response.toString());</text>
+          <text>System.out.println(&quot;response: \n&quot;+response.toString());</text>
         </org.drools.workbench.models.datamodel.rule.FreeFormLine>
       </definition>
       <childColumns>
